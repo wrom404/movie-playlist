@@ -11,6 +11,7 @@ const Hero = () => {
 
   return (
     <>
+      {/* daisyui sidebar */}
       <div className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
@@ -92,12 +93,18 @@ const Hero = () => {
         </div>
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-60 p-4">
-            {/* Sidebar content here */}
-            {nav.map(nav => (
-              <ul key={nav.navName}>
-                <li className='text-slate-100 text-base'>{nav.navName}</li>
-              </ul>
+          <ul className="menu bg-base-200 text-base-content min-h-full w-72 max-xxs:w-60 p-4">
+            {nav.map((nav, i) => (
+              // daisyui accordion
+              <div className="collapse collapse-arrow bg-base-200" key={i}>
+                <input type="radio" name="my-accordion-3" />
+                <div className="collapse-title text-xl font-medium">{nav.navName}</div>
+                <div className="collapse-content">
+                  <li><a>Popular</a></li>
+                  <li><a>Top Rated</a></li>
+                  <li><a>Upcoming</a></li>
+                </div>
+              </div>
             ))}
           </ul>
         </div>
