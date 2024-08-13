@@ -11,7 +11,7 @@ export default {
         dark: '#1c1c21'
       },
       screens: {
-        'xs': '375px',
+        'xs': '413px',
         'xxs': '320px'
       }
     },

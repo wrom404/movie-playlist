@@ -1,12 +1,9 @@
 import React from 'react'
-import useFetch from '../hooks/useFetch'
 
-const PopularMovie = () => {
-
-  
+const NowPlayingMovie = () => {
   return (
     // daisyui carousel
-    <div className="carousel rounded-box flex gap-4 ">
+    <div className="carousel rounded-box flex gap-4 border-2 border-orange-500">
       <div className="carousel-item">
         <img
           src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
@@ -46,4 +43,4 @@ const PopularMovie = () => {
   )
 }
 
-export default PopularMovie
+export default NowPlayingMovie

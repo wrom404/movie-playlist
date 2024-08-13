@@ -4,6 +4,9 @@ import useFetch from '../hooks/useFetch';
 import Card from '../components/Card';
 import { nav } from '../constants/NavLinks';
 import Width from '../utils/Width';
+import PopularMovie from './PopularMovie';
+import NowPlayingMovie from './NowPlayingMovie';
+import { FaArrowRight } from "react-icons/fa6";
 
 const Hero = () => {
   const { error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=cd195342e84b2de96c560c1ecbc7b217`, true);
@@ -16,8 +19,8 @@ const Hero = () => {
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           <Header />
-          <div className="bg-dark flex flex-col-reverse lg:flex-row">
-            <div className="w-full lg:w-2/5 h-screen flex items-center flex-col">
+          <div className="bg-dark flex flex-col-reverse lg:flex-row xs:min-h-screen md:min-h-screen">
+            <div className="w-full lg:w-2/5 min-h-fit md:h-screen flex items-center flex-col">
               <p className=" max-sm:text-sm md:text-base text-slate-100 w-full px-4 md:w-[26rem] pt-12 md:pt-32 text-center md:text-left">
                 Welcome to Movie Lounge, your ultimate destination for discovering the latest and most popular movies. Whether you're a fan of action-packed blockbusters, heartwarming dramas, or laugh-out-loud comedies, we've got something for everyone. Dive in and find your next favorite film today!
               </p>
@@ -42,7 +45,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="w-full lg:w-3/5 bg-dark flex items-center">
-              <div className="carousel w-full lg:w-11/12 pt-16 lg:pt-8">
+              <div className="carousel w-full lg:w-11/12 pt-12 lg:pt-8">
                 {movieList && movieList.length > 0 && movieList.map((movie, i) => (
                   <div id={`slide${i + 1}`} key={i} className="carousel-item relative w-full">
                     <img
@@ -89,6 +92,18 @@ const Hero = () => {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="flex justify-center items-center flex-col gap-8 bg-dark px-16 md:px-28 lg:py-12">
+            <p className="lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 lg:px-2 flex gap-4 cursor-pointer">
+              Now Playing 
+              <label className="text-slate-100 md:mt-3 text-2xl">
+                <FaArrowRight />
+              </label>
+            </p>
+            <NowPlayingMovie /> 
+          </div> 
+          <div className="flex justify-center items-center bg-dark md:px-16 lg:px-28 lg:py-12 border-4 border-green-500">
+            <PopularMovie />
           </div>
         </div>
         <div className="drawer-side z-50">
