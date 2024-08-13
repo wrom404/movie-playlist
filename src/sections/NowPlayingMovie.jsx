@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch';
 
 const NowPlayingMovie = () => {
-  const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=cd195342e84b2de96c560c1ecbc7b217`);
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`);
 
 
   return (

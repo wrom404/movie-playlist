@@ -10,7 +10,8 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import Footer from './Footer';
 
 const Hero = () => {
-  const { error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=cd195342e84b2de96c560c1ecbc7b217`);
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const { error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
   const { width } = Width();
 
   return (
