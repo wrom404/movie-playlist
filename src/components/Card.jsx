@@ -7,7 +7,7 @@ const Card = ({ m, imgUrl, title, date }) => {
       <div className='w-full overflow-hidden'>
         <img src={imgUrl} alt={title} className='w-full object-cover rounded-md hover:scale-105 transition-transform duration-300 ease-in-out' />
       </div>
-      <p className="text-md text-slate-100 font-semibold leading-4">
+      <p className="text-md text-slate-100 font-semibold leading-4 truncate">
         {title}
       </p>
       <p className="text-xs text-slate-100 mt-2">
