@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         semiDark: '#121212',
-        dark: '#1c1c21'
+        dark: '#1c1c21',
+        slightDark: '#26262C'
       },
       screens: {
         'xs': '413px',

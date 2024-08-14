@@ -3,7 +3,7 @@ import useFetch from '../hooks/useFetch';
 
 const NowPlayingMovie = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`);
+  const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`, true);
 
 
   return (

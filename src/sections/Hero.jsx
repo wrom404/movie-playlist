@@ -8,10 +8,11 @@ import PopularMovie from './PopularMovie';
 import NowPlayingMovie from './NowPlayingMovie';
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import Footer from './Footer';
+import MovieCategory from './MovieCategory';
 
 const Hero = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const { error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+  const { error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`, true);
   const { width } = Width();
 
   return (
@@ -95,8 +96,8 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center items-center flex-col gap-4 lg:gap-8 bg-dark px-8 md:px-28 lg:py-12 w-full">
-            <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
+          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-8 md:px-28 lg:py-12 w-full">
+            <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 ps-2   lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
               Now playing 
               <label className="text-slate-200 mt-2 md:mt-3 text-xl lg:text-2xl cursor-pointer">
                 <FaArrowAltCircleRight />
@@ -104,8 +105,8 @@ const Hero = () => {
             </p>
             <NowPlayingMovie /> 
           </div> 
-          <div className="flex justify-center items-center flex-col gap-4 lg:gap-8 bg-dark px-8 md:px-28 lg:py-12 w-full">
-            <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
+          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-8 md:px-28 lg:py-12 w-full">
+            <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 ps-2   lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
               Hot picks 
               <label className="text-slate-200 mt-2 md:mt-3 text-xl lg:text-2xl cursor-pointer">
                 <FaArrowAltCircleRight />
@@ -113,6 +114,9 @@ const Hero = () => {
             </p>
             <PopularMovie /> 
           </div> 
+          <div className='bg-dark xxs:pt-12'>
+          <MovieCategory />
+        </div>
           <div>
             <Footer />
           </div>

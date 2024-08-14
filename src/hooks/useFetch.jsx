@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useFetch = (url) => {
+const useFetch = (url, isDataNull = null) => {
   const [isLoading, setLoading] = useState(true);
   const [movieList, setMovieList] = useState([]);
   const [error, setError] = useState(null);
@@ -12,9 +12,9 @@ const useFetch = (url) => {
         if (!response.ok) {
           throw new Error('Something went wrong!');
         }
-        
+
         const data = await response.json();
-        const resultData = data.results;
+        const resultData = isDataNull ? data.results : data;
         setMovieList(resultData);
       } catch (error) {
         setError(error.message);
@@ -24,12 +24,9 @@ const useFetch = (url) => {
     };
 
     fetchData();
-  }, [url]);
+  }, [url, isDataNull]);
 
   return { isLoading, error, movieList };
 }
 
 export default useFetch;
-
-
-
