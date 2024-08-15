@@ -7,7 +7,6 @@ const MovieCategory = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
     const [stateId, setStateId] = useState(28)
-    const [state, setState] = useState('Action');
 
     if (isLoading) return <p className='text-4xl text-slate-100'>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -15,9 +14,8 @@ const MovieCategory = () => {
     const validGenres = ['Action', 'Adventure', 'Animation', 'Comedy', 'Fantasy', 'Horror', 'Romance', 'Science Fiction'];
     const filteredGenres = movieList?.genres?.filter((genre) => validGenres.includes(genre.name));
 
-    const handleState = (name, id) => {
-        setState(name)
-        setStateId(id)
+    const handleState = (id) => {
+        setStateId(id);
     }
     
     return (
@@ -30,12 +28,12 @@ const MovieCategory = () => {
                     <div key={i}>
                         <GenreButton 
                             genre={genre.name}
-                            handleClick={() => handleState(genre.name, genre.id)}
+                            handleClick={() => handleState(genre.id)}
                         />
                     </div>
                 ))}
             </div>
-            <Movies state={state} id={stateId} />
+            <Movies id={stateId} />
         </div>
     )
 }
