@@ -8,14 +8,16 @@ const NowPlayingMovie = () => {
 
   return (
     // daisyui carousel
-    <div className="carousel flex gap-4 rounded-none w-[100%] md:w-[90%] lg:w-[85%]">
+    <div className="carousel flex gap-4 rounded-none w-[100%] md:w-[90%] lg:w-[100%]">
       {movieList && movieList.length > 0 && movieList.map(movie => (
         <div className="carousel-item flex flex-col w-24 lg:w-52" key={movie.id}>
-          <img
-            className='w-24 lg:w-52 rounded-md'
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt="Burger" 
-          />
+          <div className='w-24 lg:w-52 rounded-md overflow-hidden'>
+            <img
+              className='w-24 lg:w-52 rounded-md hover:scale-105 transition-transform'
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt="Burger" 
+            />
+          </div>
           <div className="pt-1">
             <p className="text-sm md:text-lg text-slate-100 truncate">
               {movie.title}

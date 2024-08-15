@@ -96,7 +96,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-8 md:px-28 lg:py-12 w-full">
+          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-8 md:px-28 lg:py-4 w-full">
             <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 ps-2   lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
               Now playing 
               <label className="text-slate-200 mt-2 md:mt-3 text-xl lg:text-2xl cursor-pointer">
