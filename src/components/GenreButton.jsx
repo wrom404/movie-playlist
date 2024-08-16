@@ -1,7 +1,7 @@
-const GenreButton = ({ genre, handleClick, isActive}) => {
+const GenreButton = ({ genre, isIdActive, handleClick}) => {
 
     return <button 
-                className={`${isActive ? 'text-red-500' : 'text-slate-200'} bg-slightDark max-md:px-2 max-md:py-1 md:px-4 md:py-2 rounded-lg hover:text-blue-500`}
+                className={`${isIdActive ? 'bg-slate-900 text-blue-500' : 'bg-slightDark text-slate-200'} max-md:px-2 max-md:py-1 md:px-4 md:py-2 rounded-lg hover:text-blue-500`}
                 onClick={() => handleClick()}
             >
                 {genre}

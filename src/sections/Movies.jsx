@@ -9,8 +9,8 @@ const Movies = ({state, id}) => {
   return (
     <div className='grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-x-8 gap-y-6 mt-8'>
         {movieList && movieList.length > 0 && movieList.map((movie, i) => (
-            <div key={i} className="w-24 lg:w-48 rounded-md">
-                <div className="w-24 md:w-32 lg:w-48 rounded-md overflow-hidden">
+            <div key={i} className="w-[6.5rem] lg:w-48 rounded-md">
+                <div className="w-[6.5rem] md:w-32 lg:w-48 rounded-md overflow-hidden">
                     <img 
                         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
                         className='hover:scale-105 transition-transform'
