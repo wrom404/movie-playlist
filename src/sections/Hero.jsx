@@ -12,7 +12,7 @@ import MovieCategory from './MovieCategory';
 
 const Hero = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const { error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`, true);
+  const {isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`, true);
   const { width } = Width();
 
   return (
@@ -35,15 +35,32 @@ const Hero = () => {
                   </p>
                 </div>
                 <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
-                  {movieList && movieList.length > 0 && movieList.slice(0, 3).map((movie) => (
-                    <Card 
-                      m={movie}
-                      key={movie.id} 
-                      imgUrl={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                      title={movie.title}
-                      date={movie.release_date}
-                    />
-                  ))}
+                  {isLoading ? (
+                    // Render Skeleton Loaders when data is still loading
+                    Array.from({ length: 3 }).map((_, index) => (
+                      <div key={index} className="flex w-24 lg:w-28 xl:w-32 md:h-64 rounded-md flex-col gap-4">
+                        <div className="skeleton h-32 w-full"></div>
+                        <div className="skeleton h-4 w-28"></div>
+                        <div className="skeleton h-4 w-full"></div>
+                        <div className="skeleton h-4 w-full"></div>
+                      </div>
+                    ))
+                  ) : (
+                    // Render Movie Cards once data is loaded
+                    movieList && movieList.length > 0 ? (
+                      movieList.slice(0, 3).map((movie) => (
+                        <Card 
+                          m={movie}
+                          key={movie.id} 
+                          imgUrl={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                          title={movie.title}
+                          date={movie.release_date}
+                        />
+                      ))
+                    ) : (
+                      <p className='text-2xl text-slate-200'>No movies found.</p>
+                    )
+                  )}
                 </div>
               </div>
             </div>

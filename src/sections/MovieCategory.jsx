@@ -9,7 +9,6 @@ const MovieCategory = () => {
     const [stateId, setStateId] = useState(28)
     const [isActive, setActive] = useState(28)
 
-    if (isLoading) return <p className='text-4xl text-slate-100'>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
     const validGenres = ['Action', 'Adventure', 'Animation', 'Comedy', 'Fantasy', 'Horror', 'Romance', 'Science Fiction'];
@@ -25,18 +24,27 @@ const MovieCategory = () => {
             <p className="text-blue-500 text-2xl md:text-2xl lg:text-4xl font-bold border-l-8 border-slate-900 ps-2">
                 Movies
             </p>
-            <div className='flex gap-x-6 md:gap-x-8 gap-y-2 flex-wrap mt-2'>
-                {filteredGenres.map((genre, i) => (
-                    <div key={i}>
-                        <GenreButton 
-                            genre={genre.name}
-                            isIdActive={isActive === genre.id}
-                            handleClick={() => handleState(genre.id)}
-                        />
+                {!isLoading ? 
+                <>
+                    <div className='flex gap-x-6 md:gap-x-8 gap-y-2 flex-wrap mt-2'>
+                    {filteredGenres.map((genre, i) => (
+                        <div key={i}>
+                            <GenreButton 
+                                genre={genre.name}
+                                isIdActive={isActive === genre.id}
+                                handleClick={() => handleState(genre.id)}
+                            />
+                        </div>
+                    ))}
                     </div>
-                ))}
-            </div>
-            <Movies id={stateId} />
+                    <Movies id={stateId} />
+                </> : 
+                <div className='flex gap-x-6 md:gap-x-8 gap-y-2 flex-wrap mt-2'>
+                    {Array.from({length: 8}).map((index) => (
+                    <div className="skeleton max-md:h-[50px] max-md:w-[10px] md:h-[40px] md:w-[100px] rounded-lg"> </div>
+                  ))}
+                </div>}
+
         </div>
     )
 }
