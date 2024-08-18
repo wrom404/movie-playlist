@@ -69,7 +69,7 @@ const Header = () => {
                             </div>
                         ))}
                     </ul>
-                :   <label htmlFor="my-drawer-4" className='drawer-button text-4xl'>
+                :   <label htmlFor="my-drawer-4" className='drawer-button text-4xl text-slate-400'>
                         <RxHamburgerMenu />
                     </label>}
             </nav>  

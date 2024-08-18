@@ -39,10 +39,10 @@ const Hero = () => {
                     // Render Skeleton Loaders when data is still loading
                     Array.from({ length: 3 }).map((_, index) => (
                       <div key={index} className="flex w-24 lg:w-28 xl:w-32 md:h-64 rounded-md flex-col gap-4">
-                        <div className="skeleton h-32 w-full"></div>
-                        <div className="skeleton h-4 w-28"></div>
-                        <div className="skeleton h-4 w-full"></div>
-                        <div className="skeleton h-4 w-full"></div>
+                        <div className="skeleton h-32 w-full bg-semiDark skeleton-dark"></div>
+                        <div className="skeleton h-4 w-3/4 bg-semiDark skeleton-dark"></div>
+                        <div className="skeleton h-4 w-full bg-semiDark skeleton-dark"></div>
+                        <div className="skeleton h-4 w-full bg-semiDark skeleton-dark"></div>
                       </div>
                     ))
                   ) : (
@@ -77,13 +77,13 @@ const Hero = () => {
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                       <a 
                         href={`#slide${(i)}`} 
-                        className="btn btn-circle"
+                        className="btn btn-circle bg-dark border-none text-slate-500"
                       >
                         ❮
                       </a>
                       <a 
                         href={`#slide${(i + 2)}`} 
-                        className="btn btn-circle"
+                        className="btn btn-circle bg-dark text-slate-500 border-none"
                       >
                         ❯
                       </a>
@@ -113,7 +113,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-8 md:px-28 lg:py-4 w-full">
+          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-4 md:px-28 lg:py-4 w-full">
             <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 ps-2   lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
               Now playing 
               <label className="text-slate-200 mt-2 md:mt-3 text-xl lg:text-2xl cursor-pointer">
@@ -122,7 +122,7 @@ const Hero = () => {
             </p>
             <NowPlayingMovie /> 
           </div> 
-          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-8 md:px-28 lg:py-12 w-full">
+          <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-4 md:px-28 lg:py-12 w-full">
             <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 ps-2   lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
               Hot picks 
               <label className="text-slate-200 mt-2 md:mt-3 text-xl lg:text-2xl cursor-pointer">
@@ -140,13 +140,13 @@ const Hero = () => {
         </div>
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-72 max-xxs:w-60 p-4">
+          <ul className="menu text-base-content min-h-full w-72 max-xxs:w-60 p-4 bg-dark">
             {nav.map((nav, i) => (
               // daisyui accordion
-              <div className="collapse collapse-arrow bg-base-200" key={i}>
+              <div className="collapse collapse-arrow bg-dark" key={i}>
                 <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title text-xl font-medium">{nav.navName}</div>
-                <div className="collapse-content">
+                <div className="collapse-title text-xl font-medium text-slate-200">{nav.navName}</div>
+                <div className="collapse-content text-slate-200">
                   <li><a>Popular</a></li>
                   <li><a>Top Rated</a></li>
                   <li><a>Upcoming</a></li>

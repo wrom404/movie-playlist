@@ -20,7 +20,7 @@ const MovieCategory = () => {
     }
     
     return (
-        <div className='bg-dark px-8 md:px-32 md:py-8'>
+        <div className='bg-dark px-4 md:px-32 md:py-8'>
             <p className="text-blue-500 text-2xl md:text-2xl lg:text-4xl font-bold border-l-8 border-slate-900 ps-2">
                 Movies
             </p>
@@ -41,7 +41,7 @@ const MovieCategory = () => {
                 </> : 
                 <div className='flex gap-x-6 md:gap-x-8 gap-y-2 flex-wrap mt-2'>
                     {Array.from({length: 8}).map((index) => (
-                    <div className="skeleton max-md:h-[50px] max-md:w-[10px] md:h-[40px] md:w-[100px] rounded-lg"> </div>
+                    <div className="skeleton max-md:w-[50px] max-md:h-[10px] md:h-[40px] md:w-[100px] rounded-lg skeleton-dark"> </div>
                   ))}
                 </div>}
 
