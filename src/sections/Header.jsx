@@ -4,6 +4,8 @@ import Input from '../components/Input'
 import Width from '../utils/Width';
 import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Header = () => {
@@ -11,6 +13,7 @@ const Header = () => {
     const searchLogo = useRef(null);
     const [isDropdownVisible, setDropdownVIsible] = useState(true);
     const { width } = Width();
+    const navigatePage = useNavigate()
 
     useEffect(() => {
         const handleClickOutside = e => {
@@ -32,9 +35,16 @@ const Header = () => {
         setDropdownVIsible(!isDropdownVisible);
     };
 
+    const handleClick = () => {
+        navigatePage('/')
+    }
+
     return (
         <div className='flex justify-between gap-4 px-4 lg:px-24 py-4 bg-slate-900 fixed w-full z-50'>
-            <h2 className="text-2xl text-blue-500 font-bold tracking-tighter cursor-pointer">
+            <h2 
+                className="text-2xl text-blue-500 font-bold tracking-tighter cursor-pointer"
+                onClick={handleClick}
+                >
                 Movie
             </h2>
             <div className='relative flex items-center' ref={searchLogo}>

@@ -9,11 +9,19 @@ import NowPlayingMovie from './NowPlayingMovie';
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import Footer from './Footer';
 import MovieCategory from './MovieCategory';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const {isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`, true);
   const { width } = Width();
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    navigate(`movie/${id}`)
+    // console.log(id);
+    
+  }
 
   return (
     <>
@@ -21,7 +29,6 @@ const Hero = () => {
       <div className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-          <Header />
           <div className="bg-dark flex flex-col-reverse lg:flex-row xs:min-h-screen md:min-h-screen">
             <div className="w-full lg:w-2/5 min-h-fit md:h-screen flex items-center flex-col">
               <p className=" max-sm:text-sm md:text-base text-slate-100 w-full px-4 md:w-[26rem] pt-12 md:pt-32 text-center md:text-left">
@@ -50,8 +57,10 @@ const Hero = () => {
                     movieList && movieList.length > 0 ? (
                       movieList.slice(0, 3).map((movie) => (
                         <Card 
-                          m={movie}
+                          handleClick = {handleClick}
+                          // m={movie}
                           key={movie.id} 
+                          id={movie.id}
                           imgUrl={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                           title={movie.title}
                           date={movie.release_date}

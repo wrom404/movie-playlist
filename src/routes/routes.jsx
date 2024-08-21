@@ -1,11 +1,23 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Hero from '../sections/Hero';
+import { createBrowserRouter } from "react-router-dom";
+import Header from "../sections/Header";
+import MoviePage from "../pages/MoviePage";
+import Main from "../pages/Main";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Hero />
+        element: <>
+            <Header />
+            <Main />
+        </>,
+    },
+    {
+        path: "/movie/:id",
+        element: <>
+            <Header />
+            <MoviePage />
+        </>
     }
-]);
+  ]);
 
-export default router;
+  export default router
