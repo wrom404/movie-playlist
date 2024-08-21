@@ -32,14 +32,14 @@ const NowPlayingMovie = () => {
         ))}
       </div> :
       <div className='flex gap-4'>
-        {Array.from({length: 3}).map((index) => (
-        <div className="flex flex-col gap-4 w-24 lg:w-52">
-          <div className="skeleton h-32 w-full bg-semiDark skeleton-dark"></div>
-          <div className="skeleton h-4 w-3/4 bg-semiDark skeleton-dark"></div>
-          <div className="skeleton h-4 w-full bg-semiDark skeleton-dark"></div>
-          <div className="skeleton h-4 w-full bg-semiDark skeleton-dark"></div> 
-        </div>
-      ))}
+        {Array.from({length: 3}).map((_, index) => (
+          <div className="flex flex-col gap-4 w-24 lg:w-52" key={index}>
+            <div className="skeleton h-32 w-full bg-semiDark skeleton-dark"></div>
+            <div className="skeleton h-4 w-3/4 bg-semiDark skeleton-dark"></div>
+            <div className="skeleton h-4 w-full bg-semiDark skeleton-dark"></div>
+            <div className="skeleton h-4 w-full bg-semiDark skeleton-dark"></div> 
+          </div>
+        ))}
       </div>}
     </>
   )

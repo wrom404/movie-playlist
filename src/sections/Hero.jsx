@@ -65,52 +65,58 @@ const Hero = () => {
               </div>
             </div>
             <div className="w-full lg:w-3/5 bg-dark flex items-center">
-              <div className="carousel w-full lg:w-11/12 pt-12 lg:pt-8">
-                {movieList && movieList.length > 0 && movieList.map((movie, i) => (
-                  <div id={`slide${i + 1}`} key={i} className="carousel-item relative w-full">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-                      className="w-full"
-                      alt={`Slide ${i + 1}`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                      <a 
-                        href={`#slide${(i)}`} 
-                        className="btn btn-circle bg-dark border-none text-slate-500"
-                      >
-                        ❮
-                      </a>
-                      <a 
-                        href={`#slide${(i + 2)}`} 
-                        className="btn btn-circle bg-dark text-slate-500 border-none"
-                      >
-                        ❯
-                      </a>
-                    </div>
-                    <div className="flex absolute left-12 bottom-2 text-slate-100 ">
-                      <div className="flex-[2]">
-                        <div className="ms-4 w-12 md:w-28">
-                          <img 
-                            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
-                            alt="pic" 
-                            className='w-full object-cover rounded-md'
-                          />
+              {!isLoading ? 
+                <div className="carousel w-full lg:w-11/12 pt-12 lg:pt-8">
+                  {movieList && movieList.length > 0 && movieList.map((movie, i) => (
+                    <div id={`slide${i + 1}`} key={i} className="carousel-item relative w-full">
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                        className="w-full"
+                        alt={`Slide ${i + 1}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                      <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                        <a 
+                          href={`#slide${(i)}`} 
+                          className="btn btn-circle bg-dark border-none text-slate-500"
+                        >
+                          ❮
+                        </a>
+                        <a 
+                          href={`#slide${(i + 2)}`} 
+                          className="btn btn-circle bg-dark text-slate-500 border-none"
+                        >
+                          ❯
+                        </a>
+                      </div>
+                      <div className="flex absolute left-12 bottom-2 text-slate-100 ">
+                        <div className="flex-[2]">
+                          <div className="ms-4 w-12 md:w-28">
+                            <img 
+                              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
+                              alt="pic" 
+                              className='w-full object-cover rounded-md'
+                            />
+                          </div>
+                        </div>
+                        <div className="flex-[8] text-slate-100 flex flex-col justify-end mb-4 pr-8">
+                          <p className="ms-2 text-sm md:text-2xl font-semibold text-slate-100">
+                            {movie.title}
+                          </p>
+                          {width >= 425 && <p className="text-sm">
+                              {movie.overview}
+                            </p>
+                          }
                         </div>
                       </div>
-                      <div className="flex-[8] text-slate-100 flex flex-col justify-end mb-4 pr-8">
-                        <p className="ms-2 text-sm md:text-2xl font-semibold text-slate-100">
-                          {movie.title}
-                        </p>
-                        {width >= 425 && <p className="text-sm">
-                            {movie.overview}
-                          </p>
-                        }
-                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div> :
+                <div className="skeleton w-full max-sm:h-56 h-72 lg:h-2/3 lg:w-11/12 bg-semiDark skeleton-dark"></div>
+
+              }
+              
+
             </div>
           </div>
           <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-4 md:px-28 lg:py-4 w-full">

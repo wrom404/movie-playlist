@@ -40,8 +40,11 @@ const MovieCategory = () => {
                     <Movies id={stateId} />
                 </> : 
                 <div className='flex gap-x-6 md:gap-x-8 gap-y-2 flex-wrap mt-2'>
-                    {Array.from({length: 8}).map((index) => (
-                    <div className="skeleton max-md:w-[50px] max-md:h-[10px] md:h-[40px] md:w-[100px] rounded-lg skeleton-dark"> </div>
+                    {Array.from({length: 8}).map((_,index) => (
+                    <div 
+                        className="skeleton max-md:w-[50px] max-md:h-[10px] md:h-[40px] md:w-[100px] rounded-lg skeleton-dark" 
+                        key={index}
+                    > </div>
                   ))}
                 </div>}
 
