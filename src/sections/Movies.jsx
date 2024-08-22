@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import useFetch from '../hooks/useFetch'
 
-const Movies = ({state, id}) => {
+const Movies = ({ state, id, handleClick}) => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}`, true);
 
@@ -9,7 +9,11 @@ const Movies = ({state, id}) => {
     <div className='grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-x-3 gap-y-4 md:gap-x-8 md:gap-y-6 mt-8'>
         {!isLoading ? 
             movieList && movieList.length > 0 && movieList.map((movie, i) => (
-                <div key={i} className="w-[6rem] md:w-[6.5rem] lg:w-48 rounded-md">
+                <div 
+                    key={i} 
+                    className="w-[6rem] md:w-[6.5rem] lg:w-48 rounded-md"
+                    onClick={() => handleClick(movie.id)}
+                >
                     <div className="w-full md:w-full lg:w-48 rounded-md overflow-hidden">
                         <img 
                             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 

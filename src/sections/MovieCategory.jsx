@@ -3,7 +3,7 @@ import useFetch from '../hooks/useFetch'
 import GenreButton from '../components/GenreButton';
 import Movies from './Movies';
 
-const MovieCategory = () => {
+const MovieCategory = ({ handleClick }) => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
     const [stateId, setStateId] = useState(28)
@@ -37,7 +37,10 @@ const MovieCategory = () => {
                         </div>
                     ))}
                     </div>
-                    <Movies id={stateId} />
+                    <Movies 
+                        id={stateId} 
+                        handleClick={handleClick}
+                    />
                 </> : 
                 <div className='flex gap-x-6 md:gap-x-8 gap-y-2 flex-wrap mt-2'>
                     {Array.from({length: 8}).map((_,index) => (

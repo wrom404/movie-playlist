@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetch';
 
-const NowPlayingMovie = () => {
+const NowPlayingMovie = ({ handleClick }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`, true);
 
@@ -12,7 +12,7 @@ const NowPlayingMovie = () => {
       {!isLoading ? 
         <div className="carousel flex gap-4 rounded-none w-[100%] md:w-[90%] lg:w-[100%]">
         {movieList && movieList.length > 0 && movieList.map(movie => (
-          <div className="carousel-item flex flex-col w-24 lg:w-52" key={movie.id}>
+          <div className="carousel-item flex flex-col w-24 lg:w-52" key={movie.id} onClick={() => handleClick(movie.id)}>
             <div className='w-24 lg:w-52 rounded-md overflow-hidden'>
               <img
                 className='w-24 lg:w-52 rounded-md hover:scale-105 transition-transform'

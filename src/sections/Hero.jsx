@@ -19,8 +19,6 @@ const Hero = () => {
 
   const handleClick = (id) => {
     navigate(`movie/${id}`)
-    // console.log(id);
-    
   }
 
   return (
@@ -135,7 +133,9 @@ const Hero = () => {
                 <FaArrowAltCircleRight />
               </label>
             </p>
-            <NowPlayingMovie /> 
+            <NowPlayingMovie 
+              handleClick={handleClick}
+            /> 
           </div> 
           <div className="flex justify-center items-center flex-col gap-2 lg:gap-4 bg-dark px-4 md:px-28 lg:py-12 w-full">
             <p className="text-2xl lg:text-4xl font-bold text-blue-500 w-full border-l-8 border-slate-900 ps-2   lg:px-2 flex gap-2 lg:gap-4 cursor-pointer max-sm:mt-12">
@@ -144,10 +144,14 @@ const Hero = () => {
                 <FaArrowAltCircleRight />
               </label>
             </p>
-            <PopularMovie /> 
+            <PopularMovie 
+              handleClick={handleClick}
+            /> 
           </div> 
           <div className='bg-dark xxs:pt-12'>
-          <MovieCategory />
+          <MovieCategory 
+            handleClick={handleClick}
+          />
         </div>
           <div>
             <Footer />
