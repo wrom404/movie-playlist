@@ -40,7 +40,7 @@ const Header = () => {
     }
 
     return (
-        <div className='flex justify-between gap-4 px-4 lg:px-24 py-4 bg-slate-900 fixed w-full z-50'>
+        <section className='flex justify-between gap-4 px-4 lg:px-24 py-4 bg-slate-900 fixed w-full z-50'>
             <h2 
                 className="text-2xl text-blue-500 font-bold tracking-tighter cursor-pointer"
                 onClick={handleClick}
@@ -83,7 +83,7 @@ const Header = () => {
                         <RxHamburgerMenu />
                     </label>}
             </nav>  
-        </div>
+        </section>
     );
 }
 

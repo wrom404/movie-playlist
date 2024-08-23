@@ -20,7 +20,7 @@ const MovieCategory = ({ handleClick }) => {
     }
     
     return (
-        <div className='bg-dark px-4 md:px-32 md:py-8'>
+        <section className='bg-dark px-4 md:px-32 md:py-8'>
             <p className="text-blue-500 text-2xl md:text-2xl lg:text-4xl font-bold border-l-8 border-slate-900 ps-2">
                 Movies
             </p>
@@ -51,7 +51,7 @@ const MovieCategory = ({ handleClick }) => {
                   ))}
                 </div>}
 
-        </div>
+        </section>
     )
 }
 

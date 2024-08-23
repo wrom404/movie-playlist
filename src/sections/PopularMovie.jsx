@@ -9,7 +9,7 @@ const PopularMovie = ({ handleClick }) => {
     // daisyui carousel
     <>
       {!isLoading ? 
-        <div className="carousel flex gap-4 rounded-none w-[100%] md:w-[90%] lg:w-[100%]">
+        <section className="carousel flex gap-4 rounded-none w-[100%] md:w-[90%] lg:w-[100%]">
         {movieList && movieList.length > 0 && movieList.map(movie => (
           <div 
             className="carousel-item flex flex-col w-24 lg:w-52" 
@@ -33,7 +33,7 @@ const PopularMovie = ({ handleClick }) => {
             </div>
           </div>
         ))}
-      </div> :
+      </section> :
       <div className='flex gap-4'>
         {Array.from({length: 3}).map((_,index) => (
           <div className="flex flex-col gap-4 w-24 lg:w-52" key={index}>

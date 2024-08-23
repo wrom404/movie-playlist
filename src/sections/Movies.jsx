@@ -6,7 +6,7 @@ const Movies = ({ state, id, handleClick}) => {
     const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${id}`, true);
 
   return (
-    <div className='grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-x-3 gap-y-4 md:gap-x-8 md:gap-y-6 mt-8'>
+    <section className='grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-x-3 gap-y-4 md:gap-x-8 md:gap-y-6 mt-8'>
         {!isLoading ? 
             movieList && movieList.length > 0 && movieList.map((movie, i) => (
                 <div 
@@ -41,7 +41,7 @@ const Movies = ({ state, id, handleClick}) => {
                     </div>
                 ))
             }
-    </div>
+    </section>
 
   )
 }

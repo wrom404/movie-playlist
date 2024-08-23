@@ -24,7 +24,7 @@ const Hero = () => {
   return (
     <>
       {/* daisyui sidebar */}
-      <div className="drawer drawer-end">
+      <section className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           <div className="bg-dark flex flex-col-reverse lg:flex-row xs:min-h-screen md:min-h-screen">
@@ -174,7 +174,7 @@ const Hero = () => {
             ))}
           </ul>
         </div>
-      </div>
+      </section>
     </>
   );
 }

@@ -39,9 +39,7 @@ const MoviePage = () => {
     if (error) return <p className='h-screen flex justify-center items-center'>{error}</p>;
 
     return (
-        <div 
-            className='relative h-screen w-full grid items-center'
-        >
+        <div className='relative h-screen w-full'>
             <div
                 className="absolute inset-0"
                 style={{
@@ -55,13 +53,13 @@ const MoviePage = () => {
             />
             <div className='bg-black absolute inset-0 opacity-50 z-10'></div>
             {movieList && 
-                <div className='relative h-screen flex gap-8 z-10'>
-                    <div className='flex-[3] flex justify-end items-center pt-16'>
-                        <div className='w-80'>
+                <div className='relative h-screen flex max-md:flex-col gap-8 z-10'>
+                    <div className='md:flex-[3] flex justify-end items-center pt-16 xxs:flex xxs:justify-center xxs:items-center border-4 border-red-500'>
+                        <div className=' w-44 xs:w-48 md:w-60 lg:w-80'>
                             <img src={`https://image.tmdb.org/t/p/w500/${movieList.poster_path}`} alt="" className='w-full brightness-100'/>
                         </div>
                     </div>
-                    <div className='flex-[7] flex justify-start items-center pt-8 '>
+                    <div className='flex-[7] flex justify-start items-center pt-8 border-4 border-green-500'>
                         <div className='h-[28rem] flex flex-col gap-2'>
                             <p className="text-slate-200 font-bold text-3xl">
                                 {movieList.title}
