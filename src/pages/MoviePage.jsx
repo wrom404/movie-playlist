@@ -1,3 +1,114 @@
+// import React, { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import useFetch from '../hooks/useFetch';
+// import { FaStar } from "react-icons/fa6";
+// import { FaFire } from "react-icons/fa";
+// import { CiCalendarDate } from "react-icons/ci";
+// import VideoPlayer from '../components/VideoPlayer';
+
+
+// const MoviePage = () => {
+//     const apiKey = import.meta.env.VITE_API_KEY;
+//     const { id: movieId } = useParams();
+//     const [isVideoPlayer, setVideoPlayer] = useState(false)
+//     const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
+//     const [videoKey, setVideoKey] = useState(null);
+//     const [genresList, setGenresList] = useState([]);
+
+//     useEffect(() => {
+//         const handleGenres = () => {
+//             setGenresList(movieList.genres)
+//         };
+//         handleGenres();
+//     },[movieList])
+
+//     const handleClick = () => {
+//         fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
+//             .then(response => response.json())
+//             .then(data => {
+                
+//                 console.log(data.results);
+//                 const officialTrailer = data.results.find(video => video.name === 'Official Trailer');
+//                 setVideoKey(officialTrailer.key);
+//             })
+//             .catch(err => console.error('Error fetching video data:', err));
+//             setVideoPlayer(true);
+//     }
+//     genresList && console.log(genresList)
+//     if (isLoading) return <p className='h-screen flex justify-center items-center'>Loading...</p>;
+//     if (error) return <p className='h-screen flex justify-center items-center'>{error}</p>;
+
+//     return (
+//         <div className='relative h-screen w-full border-4 border-yellow-500'>
+//             <div
+//                 className="absolute inset-0"
+//                 style={{
+//                     backgroundImage: movieList ? `url(https://image.tmdb.org/t/p/w500/${movieList.backdrop_path})` : 'none',
+//                     backgroundSize: 'cover',
+//                     backgroundPosition: 'center',
+//                     backgroundRepeat: 'no-repeat',
+//                     filter: 'blur(8px)',
+//                     zIndex: -1
+//                 }}
+//             />
+//             <div className='bg-black absolute inset-0 opacity-50 z-10'></div>
+//             {movieList && 
+//                 <div className='grid grid-cols-3 grid-rows-3 lg:gap-x-6 relative h-screen w-full z-10 border-4 border-pink-500'>
+//                     <div className='xxs:col-span-1 xxs:row-span-2 lg:col-span-1 lg:row-span-3 grid        pt-16 border-4 border-green-500'>
+//                         <div className='self-center justify-self-end w-44 xs:w-48 md:w-60 lg:w-80'>
+//                             <img src={`https://image.tmdb.org/t/p/w500/${movieList.poster_path}`} alt="" className='w-full brightness-100'/>
+//                         </div>
+//                     </div>
+//                     <div className='xxs:col-span-2 xxs:row-span-2 lg:col-span-2 lg:row-span-2      grid pt-8 border-4 border-blue-500'>
+//                         <div className='h-[28rem] md:flex md:flex-col md:gap-2 pt-40'>
+//                             <p className="text-slate-200 font-bold text-3xl">
+//                                 {movieList.title}
+//                             </p>
+//                             <div className="text-base text-slate-200 flex">
+//                                 Rating: <span className='text-xl text-yellow-500 mx-2'><FaStar /></span> <p className="font-semibold text-base">{Math.floor(movieList.vote_average * 10) / 10}</p>
+//                             </div>
+//                             <div className="text-slate-200 flex gap-2">
+//                                 Popularity: <span className='text-xl text-red-500'><FaFire /></span> <p className='font-semibold'>{movieList.popularity}</p>
+//                             </div>
+//                             <div className="text-slate-200 flex gap-2">
+//                                 Release date: <span className='text-xl'><CiCalendarDate /></span> <p className='font-semibold'>{movieList.release_date}</p>
+//                             </div>
+//                             <div className="text-slate-200 flex gap-2 my-4">
+//                                 {genresList && genresList.length > 0 && genresList.map(genre => (
+//                                     <span 
+//                                         key={genre.id} 
+//                                         className="text-slate-200 border px-4 py-1 cursor-pointer hover:border-blue-500 hover:text-blue-500"
+//                                     >
+//                                             {genre.name}
+//                                     </span>
+//                                 ))}
+//                             </div>
+//                             <button className='border px-2 py-1  hover:border-blue-500 hover:text-blue-500 text-slate-200 w-80' onClick={handleClick}>Play Trailer</button>
+//                         </div>
+//                     </div>
+//                     <div className='xxs:col-span-3 xxs:row-span-1 lg:col-span-2 lg:row-span-1 mb-12       border-4 border-red-500'>
+//                         <div className="text-slate-200 flex gap-2 w-[80%] flex-col mt-4">
+//                             <p className='text-xl text-slate-200 font-semibold'>Overview</p>
+//                             {movieList.overview}
+//                         </div>
+//                         <div>
+//                             {isVideoPlayer ? 
+//                                 <VideoPlayer 
+//                                 videoKey={videoKey}
+//                                 setVideoPlayer={setVideoPlayer}
+//                                 /> : ''}
+//                         </div>
+//                     </div>
+//                 </div>
+//             }
+            
+//         </div>
+//     )
+// }
+
+// export default MoviePage;
+
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
@@ -6,35 +117,33 @@ import { FaFire } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import VideoPlayer from '../components/VideoPlayer';
 
-
 const MoviePage = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const { id: movieId } = useParams();
-    const [isVideoPlayer, setVideoPlayer] = useState(false)
+    const [isVideoPlayer, setVideoPlayer] = useState(false);
     const { isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
     const [videoKey, setVideoKey] = useState(null);
     const [genresList, setGenresList] = useState([]);
 
     useEffect(() => {
         const handleGenres = () => {
-            setGenresList(movieList.genres)
+            setGenresList(movieList.genres);
         };
         handleGenres();
-    },[movieList])
+    }, [movieList]);
 
     const handleClick = () => {
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
             .then(response => response.json())
             .then(data => {
-                
                 console.log(data.results);
                 const officialTrailer = data.results.find(video => video.name === 'Official Trailer');
                 setVideoKey(officialTrailer.key);
             })
             .catch(err => console.error('Error fetching video data:', err));
-            setVideoPlayer(true);
-    }
-    genresList && console.log(genresList)
+        setVideoPlayer(true);
+    };
+
     if (isLoading) return <p className='h-screen flex justify-center items-center'>Loading...</p>;
     if (error) return <p className='h-screen flex justify-center items-center'>{error}</p>;
 
@@ -53,56 +162,57 @@ const MoviePage = () => {
             />
             <div className='bg-black absolute inset-0 opacity-50 z-10'></div>
             {movieList && 
-                <div className='relative h-screen flex max-md:flex-col gap-8 z-10'>
-                    <div className='md:flex-[3] flex justify-end items-center pt-16 xxs:flex xxs:justify-center xxs:items-center border-4 border-red-500'>
-                        <div className=' w-44 xs:w-48 md:w-60 lg:w-80'>
+                <div className='grid grid-cols-1 lg:grid-cols-3 md:gap-x-6 relative h-full w-full z-10 p-4'>
+                    <div className='lg:col-span-1 lg:row-span-3 flex justify-center lg:justify-end items-center'>
+                        <div className='max-lg:mt-16 w-44 xs:w-48 md:w-60 lg:w-80'>
                             <img src={`https://image.tmdb.org/t/p/w500/${movieList.poster_path}`} alt="" className='w-full brightness-100'/>
                         </div>
                     </div>
-                    <div className='flex-[7] flex justify-start items-center pt-8 border-4 border-green-500'>
-                        <div className='h-[28rem] flex flex-col gap-2'>
-                            <p className="text-slate-200 font-bold text-3xl">
-                                {movieList.title}
-                            </p>
-                            <div className="text-base text-slate-200 flex">
-                                Rating: <span className='text-xl text-yellow-500 mx-2'><FaStar /></span> <p className="font-semibold text-base">{Math.floor(movieList.vote_average * 10) / 10}</p>
-                            </div>
-                            <div className="text-slate-200 flex gap-2">
-                                Popularity: <span className='text-xl text-red-500'><FaFire /></span> <p className='font-semibold'>{movieList.popularity}</p>
-                            </div>
-                            <div className="text-slate-200 flex gap-2">
-                                Release date: <span className='text-xl'><CiCalendarDate /></span> <p className='font-semibold'>{movieList.release_date}</p>
-                            </div>
-                            <div className="text-slate-200 flex gap-2 my-4">
-                                {genresList && genresList.length > 0 && genresList.map(genre => (
-                                    <span 
-                                        key={genre.id} 
-                                        className="text-slate-200 border-2 rounded-lg px-4 py-1 cursor-pointer hover:border-blue-500 hover:text-blue-500"
-                                    >
-                                            {genre.name}
-                                    </span>
-                                ))}
-                            </div>
-                            <button className='border px-2 py-1  hover:border-blue-500 hover:text-blue-500 text-slate-200 w-80' onClick={handleClick}>Play Trailer</button>
-                            <div className="text-slate-200 flex gap-2 w-[80%] flex-col mt-4">
-                                <p className='text-xl text-slate-200 font-semibold'>Overview</p>
-                                {movieList.overview}
-                            </div>
-                            <div>
-                                
-                                {isVideoPlayer ? 
-                                    <VideoPlayer 
+                    <div className='lg:col-span-2 lg:row-span-2 flex flex-col md:gap-2 md:pt-48 h-full'>
+                        <p className="text-slate-200 font-bold text-2xl md:text-3xl">
+                            {movieList.title}
+                        </p>
+                        <div className="text-base text-slate-200 flex items-center gap-2">
+                            Rating: <FaStar className='text-xl text-yellow-500' /> <span className="font-semibold">{Math.floor(movieList.vote_average * 10) / 10}</span>
+                        </div>
+                        <div className="text-slate-200 flex items-center gap-2">
+                            Popularity: <FaFire className='text-xl text-red-500' /> <span className='font-semibold'>{movieList.popularity}</span>
+                        </div>
+                        <div className="text-slate-200 flex items-center gap-2">
+                            Release date: <CiCalendarDate className='text-xl' /> <span className='font-semibold'>{movieList.release_date}</span>
+                        </div>
+                        <div className="text-slate-200 flex flex-wrap gap-2 mt-4">
+                            {genresList && genresList.length > 0 && genresList.map(genre => (
+                                <span 
+                                    key={genre.id} 
+                                    className="text-slate-200 border px-4 py-1 cursor-pointer hover:border-blue-500 hover:text-blue-500"
+                                >
+                                    {genre.name}
+                                </span>
+                            ))}
+                        </div>
+                        <button className='border px-4 py-2 hover:border-blue-500 hover:text-blue-500 text-slate-200 mt-4 max-w-[360px]' onClick={handleClick}>
+                            Play Trailer
+                        </button>
+                    </div>
+                    <div className='lg:col-span-2 lg:row-span-1 md:mb-24'>
+                        <div className="text-slate-200 mt-4">
+                            <p className='text-xl font-semibold'>Overview</p>
+                            <p>{movieList.overview}</p>
+                        </div>
+                        {isVideoPlayer && (
+                            <div className='mt-4'>
+                                <VideoPlayer 
                                     videoKey={videoKey}
                                     setVideoPlayer={setVideoPlayer}
-                                    /> : ''}
+                                />
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             }
-            
         </div>
-    )
-}
+    );
+};
 
 export default MoviePage;

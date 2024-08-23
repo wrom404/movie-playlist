@@ -10,6 +10,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import Footer from './Footer';
 import MovieCategory from './MovieCategory';
 import { Outlet, useNavigate } from 'react-router-dom';
+import MovieCarousel from './MovieCarousel';
 
 const Hero = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -148,6 +149,9 @@ const Hero = () => {
               handleClick={handleClick}
             /> 
           </div> 
+          <div className=''>
+            <MovieCarousel />
+          </div>
           <div className='bg-dark xxs:pt-12'>
           <MovieCategory 
             handleClick={handleClick}

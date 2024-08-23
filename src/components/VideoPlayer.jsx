@@ -24,7 +24,7 @@ const VideoPlayer = ({ setVideoPlayer, videoKey}) => {
         <div className="absolute inset-0 bg-black opacity-75"></div>
 
         <div className="absolute inset-0 flex justify-center items-center">
-            <div ref={ref} className='w-[50%] h-[50%]' onClick={handleClick}> 
+            <div ref={ref} className='w-4/5 h-1/3 sm:w-[50%] sm:h-[50%]' onClick={handleClick}> 
                 <iframe
                     className='w-full h-full'
                     src={videoUrl}
