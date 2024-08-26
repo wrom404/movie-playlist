@@ -89,7 +89,6 @@ const Header = () => {
                                 <ul tabIndex={0} className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow bg-slate-950">
                                     <li><Link to={`/tvshows/${'popular'}`}>Popular</Link></li>
                                     <li><Link to={`/tvshows/${'top_rated'}`}>Top Rated</Link></li>
-                                    <li><Link to={`/tvshows/${'upcoming'}`}>Upcoming</Link></li>
                                 </ul>
                             </div>
                         

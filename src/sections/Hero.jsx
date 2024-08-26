@@ -9,7 +9,7 @@ import NowPlayingMovie from './NowPlayingMovie';
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import Footer from './Footer';
 import MovieCategory from './MovieCategory';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, Link } from 'react-router-dom';
 import MovieCarousel from './MovieCarousel';
 
 const Hero = () => {
@@ -28,6 +28,7 @@ const Hero = () => {
       <section className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
+
           <div className="bg-dark flex flex-col-reverse lg:flex-row xs:min-h-screen md:min-h-screen">
             <div className="w-full lg:w-2/5 min-h-fit md:h-screen flex items-center flex-col">
               <p className=" max-sm:text-sm md:text-base text-slate-100 w-full px-4 md:w-[26rem] pt-12 md:pt-32 text-center md:text-left">
@@ -156,26 +157,34 @@ const Hero = () => {
           <MovieCategory 
             handleClick={handleClick}
           />
-        </div>
-          <div>
-            <Footer />
           </div>
-        </div>
+            <div>
+              <Footer />
+            </div>
+          </div>
         <div className="drawer-side z-50">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
           <ul className="menu text-base-content min-h-full w-72 max-xxs:w-60 p-4 bg-dark">
-            {nav.map((nav, i) => (
-              // daisyui accordion
-              <div className="collapse collapse-arrow bg-dark" key={i}>
+
+              <div className="collapse collapse-arrow bg-dark">
                 <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title text-xl font-medium text-slate-200">{nav.navName}</div>
+                <div className="collapse-title text-xl font-medium text-slate-200">Movies</div>
                 <div className="collapse-content text-slate-200">
-                  <li><a>Popular</a></li>
-                  <li><a>Top Rated</a></li>
-                  <li><a>Upcoming</a></li>
+                  <li><Link to={`/movies/${'popular'}`}>Popular</Link></li>
+                  <li><Link to={`/movies/${'top_rated'}`}>Top Rated</Link></li>
+                  <li><Link to={`/movies/${'upcoming'}`}>Upcoming</Link></li> 
                 </div>
               </div>
-            ))}
+
+              <div className="collapse collapse-arrow bg-dark">
+                <input type="radio" name="my-accordion-3" />
+                <div className="collapse-title text-xl font-medium text-slate-200">TV Shows</div>
+                <div className="collapse-content text-slate-200">
+                  <li><Link to={`/tvshows/${'popular'}`}>Popular</Link></li>
+                  <li><Link to={`/tvshows/${'top_rated'}`}>Top Rated</Link></li>
+                </div>
+              </div>
+
           </ul>
         </div>
       </section>
