@@ -14,6 +14,7 @@ const Header = () => {
     const [isDropdownVisible, setDropdownVIsible] = useState(true);
     const { width } = Width();
     const navigatePage = useNavigate()
+    const [query, setQuery] = useState('');
 
     useEffect(() => {
         const handleClickOutside = e => {
@@ -39,6 +40,10 @@ const Header = () => {
         navigatePage('/')
     }
 
+    function handleNavigateQuery(query) {
+        navigatePage(`/movie/find/${query}`);
+    }
+
     return (
         <section className='flex justify-between gap-4 px-4 lg:px-24 py-4 bg-slate-900 fixed w-full z-50'>
             <h2 
@@ -51,6 +56,9 @@ const Header = () => {
                 <Input 
                     onFocus={handleFocus}
                     isLogoVisible={isLogoVisible}
+                    handleQuery={handleNavigateQuery}
+                    query={query}
+                    setQuery={setQuery}
                 />
                 {isLogoVisible && 
                     <div className='absolute left-1 top-1.5 text-2xl text-slate-100 font-semibold'>

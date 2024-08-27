@@ -1,23 +1,28 @@
 import React from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams, useNavigate } from 'react-router-dom'
 import useFetch from '../hooks/useFetch';
 
+
+
 const MovieListPage = () => {
-  const apiKey = import.meta.env.VITE_API_KEY;
   const {type} = useParams();
   const currentLocation = useLocation();
   const basePath = currentLocation.pathname.split('/')[1];
   let isLoading, error, movieList =[];
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const nav = useNavigate();
   let slicedWord;
-  console.log(currentLocation.pathname);
-  
+
+  function fetchMovies(basePath, type) {
+    ({ isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/${basePath}/${type}?api_key=${apiKey}`, true));
+  }
 
   function sliceWord(word) {
     return word === 'movies' ? word.split('').slice(0, word.length - 1).join('') : word.split('').slice(0, word.length - 5).join('');
   }
 
-  function fetchMovies(basePath, type) {
-    ({ isLoading, error, movieList } = useFetch(`https://api.themoviedb.org/3/${basePath}/${type}?api_key=${apiKey}`, true));
+  function handleClick(id) {
+    nav(`/movie/${id}`);
   }
 
   switch (basePath) {
@@ -75,7 +80,7 @@ const MovieListPage = () => {
           {`${type.toUpperCase()} ${basePath.toUpperCase()}`}
         </h2>
       </div>
-      <div className='grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-x-0 gap-y-4 md:gap-x-8 md:gap-y-6 px-4 sm:px-8 md:px-16 lg:px-32'>
+      <div className='grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-x-0 gap-y-4 md:gap-x-8 md:gap-y-6 px-4 sm:px-8 md:px-16 lg:px-32 pb-12'>
         {!isLoading ? 
           movieList && movieList.length > 0 && movieList.map((movie, i) => (
             <div 

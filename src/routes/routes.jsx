@@ -3,6 +3,7 @@ import Header from "../sections/Header";
 import MoviePage from "../pages/MoviePage";
 import Main from "../pages/Main";
 import MovieListPage from "../pages/MovieListPage";
+import MovieSearchResult from "../pages/MovieSearchResult";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,13 @@ const router = createBrowserRouter([
         element: <>
             <Header />
             <MovieListPage />
+        </>
+    },
+    {
+        path: "/movie/find/:query",
+        element: <>
+            <Header />
+            <MovieSearchResult />
         </>
     }
   ]);
