@@ -32,7 +32,7 @@ const Hero = () => {
           <div className="bg-dark flex flex-col-reverse lg:flex-row xs:min-h-screen md:min-h-screen">
             <div className="w-full lg:w-2/5 min-h-fit md:h-screen flex items-center flex-col">
               <p className=" max-sm:text-sm md:text-base text-slate-100 w-full px-4 md:w-[26rem] pt-12 md:pt-32 text-center md:text-left">
-                Welcome to Movie Lounge, your ultimate destination for discovering the latest and most popular movies. Whether you're a fan of action-packed blockbusters, heartwarming dramas, or laugh-out-loud comedies, we've got something for everyone. Dive in and find your next favorite film today!
+                Welcome to Movie tambayan, your ultimate destination for discovering the latest and most popular movies. Whether you're a fan of action-packed blockbusters, heartwarming dramas, or laugh-out-loud comedies, we've got something for everyone. Dive in and find your next favorite film today!
               </p>
 
               <div className='mt-8 w-full px-4 md:w-auto'>
