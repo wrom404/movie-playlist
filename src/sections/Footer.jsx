@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="text-xs md:text-sm text-center py-2">
         This website is currently under development and is not yet finished.
       </div>
-      <p className='text-xs md:text-sm lg:text-base'>Copyright ©2024 | Created by wrom404</p>
+      <p className='text-xs md:text-sm lg:text-base'>Copyright ©2024 | Develop by undefined</p>
     </section>
   )
 }
